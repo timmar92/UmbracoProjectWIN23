@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\scss\sections\" />
     <Folder Include="wwwroot\media\" />
   </ItemGroup>
 

@@ -1,0 +1,10 @@
+footer {
+    .container {
+        .copyright {
+            display: flex;
+            padding {
+                @include text;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+header {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Add drop shadow
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 17px;
+        padding-bottom: 17px;
+
+        .logotype {
+        }
+
+        .navbar {
+            
+        }
+
+        .search {
+            i {
+                font-weight:700;
+            }
+        }
+
+        #mobile-menu {
+            display: none;
+        }
+    }
+}
