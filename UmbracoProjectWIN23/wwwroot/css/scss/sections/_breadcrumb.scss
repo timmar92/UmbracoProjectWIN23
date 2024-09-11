@@ -1,0 +1,46 @@
+.page-title {
+    background-color: var(--color-gray);
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                position: relative;
+
+                a {
+                    color: var(--color-primary);
+                }
+
+                &::after {
+                    content: '>';
+                    margin-left: 10px;
+                    color: var(--color-primary);
+                }
+
+                &:last-child::after {
+                    content: '';
+                }
+
+                &.active {
+                    color: var(--color-secondary);
+                }
+
+
+            }
+        }
+    }
+}

@@ -1,0 +1,65 @@
+#service-item {
+    //height: 420px;
+    width: 350px;
+    border-radius: 5px;
+    background-color: var(--color-light);
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    .item {
+        .header {
+            text-align: start;
+            transition: transform 0.5s ease;
+
+            h4 {
+                font-weight: 600;
+                margin-left: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding-top: 30px;
+            }
+        }
+
+        .body {
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                transition: transform 0.5s ease;
+            }
+        }
+
+        .footnote {
+            text-align: start;
+            transition: transform 0.5s ease;
+
+            p {
+                color: var(--color-primary) !important;
+                margin-top: 1.5rem;
+                margin-left: 1.5rem;
+                margin-right: 1.5rem;
+                padding-bottom: 30px;
+            }
+        }
+    }
+
+    &:hover {
+        .body img {
+            transform: scale(1.2); // Zoom in the image slightly
+        }
+
+        .footnote {
+            transform: scale(1.1); // Scale up the footnote slightly
+        }
+
+        .header {
+            transform: scale(1.1); // Scale up the footnote slightly
+        }
+
+        text-decoration: none;
+    }
+}

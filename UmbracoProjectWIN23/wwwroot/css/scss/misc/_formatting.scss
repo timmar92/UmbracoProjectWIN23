@@ -10,8 +10,10 @@
 }
 
 .center {
+    display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .umb-block-grid__layout-container {

@@ -1,0 +1,46 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+	var random = new Random();
+	var selection = Umbraco.Content(Guid.Parse("24fd9156-09ce-4833-97b8-2e58e08a8494"))
+		.ChildrenOfType("serviceItemTemplate")
+		.Where(x => x.IsVisible())
+		.OrderBy(x => random.Next()) // Randomize the order
+		.Take(6); // Take 6 random items
+	var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+	var customHeadline = Model?.Content.Value<string>("customHeadline") ?? "";
+}
+
+
+
+<div class="services">
+	<div class="header">
+		<h6>@sectionTitle</h6>
+		<h2>@customHeadline</h2>
+	</div>
+	<div class="services-list">
+		@foreach (var item in selection)
+		{
+			var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+			var preamble = item?.Value<string>("preamble") ?? "";
+
+			<a id="service-item" href="@item.Url()">
+				<div class="item">
+					<div class="header">
+						<h4>@item.Name()</h4>
+					</div>
+					<div class="body">
+						<img src="@image" alt="@item.Name()">
+					</div>
+					<div class="footnote">
+						<p>@preamble</p>
+					</div>
+				</div>
+			</a>
+		}
+	</div>
+</div>
+
+

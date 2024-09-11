@@ -1,0 +1,14 @@
+#about-us {
+
+    blockquote {
+        @include text;
+        margin-bottom: 25px;
+        font-size: 1.25rem;
+        font-weight: 300;
+    }
+
+    img {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+}

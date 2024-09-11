@@ -15,9 +15,55 @@ a {
             font-family: "Font Awesome 6 Pro";
             display: inline-block;
             vertical-align: middle;
-            font-size: 0,8em;
+            font-size: 0.8em;
             margin-left: 0.3em;
             margin-top: -0.9em;
         }
     }
+}
+
+.socialmedia-item {
+    display: inline-block;
+    font-size: 1.4em;
+    text-decoration: none;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    transition: 0.25s;
+    transition: color 0.25s;
+    color: var(--color-light) !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    &:first-child {
+        border-left: 1px solid var(--color-border-dark);
+    }
+
+    &:last-child {
+        border-right: 1px solid var(--color-border-dark);
+    }
+
+    &:not(:last-child) {
+        border-right: 1px solid var(--color-border-dark);
+    }
+
+    &:hover {
+        color: var(--color-secondary) !important;
+    }
+
+    &[target="_blank"] {
+
+        &::after {
+            content: none;
+        }
+    }
+}
+
+.nav-link {
+    @include text;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.active {
+    color: var(--color-secondary);
 }

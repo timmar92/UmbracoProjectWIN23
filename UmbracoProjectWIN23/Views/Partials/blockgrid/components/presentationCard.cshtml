@@ -1,0 +1,23 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var cardTitle = Model?.Content.Value<string>("cardTitle") ?? "";
+    var cardImage = Model?.Content.Value<IPublishedContent>("cardImage")?.Url() ?? null;
+    var cardContent = Model?.Content.Value<string>("cardContent") ?? "";
+    var cardUrl = Model?.Content.Value<string>("cardUrl") ?? "";
+
+
+    var pixelHeight = Model.Content.Value<int>("pixelHeight");
+    var pixelWidth = Model.Content.Value<int>("pixelWidth");
+
+
+}
+
+<a href="@cardUrl" class="presentation-card" style="height: @(pixelHeight)px; width: @(pixelWidth)px;">
+    <h5 class="card-title">@cardTitle</h5>
+    <img class="card-image" src="@cardImage" alt="@cardTitle"/>
+    <p class="card-content">@cardContent</p>
+</a>

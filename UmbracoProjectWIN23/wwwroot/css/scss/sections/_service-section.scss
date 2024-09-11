@@ -1,0 +1,17 @@
+#service {
+    .container {
+        .services {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .header {
+                max-width: 100%;
+                width: 600px;
+            }
+
+
+        }
+    }
+}

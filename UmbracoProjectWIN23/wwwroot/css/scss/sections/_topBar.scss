@@ -10,34 +10,6 @@
             @include text;
         }
 
-        .social-media {
-            display: flex;
-            align-items: center;
 
-
-            .btn-social {
-                font-size: 1.3em;
-                color: var(--color-gray);
-                padding: 6px 15px;
-                transition: 0.25s;
-
-                &:first-child {
-                    border-left: 1px solid var(--color-gray);
-                }
-
-                &:last-child {
-                    border-right: 1px solid var(--color-gray);
-                }
-
-                &:not(:last-child) {
-                    border-right: 1px solid var(--color-gray);
-                }
-
-                &:hover {
-                    color: var(--color-secondary);
-                    transition: 0.25s;
-                }
-            }
-        }
     }
 }

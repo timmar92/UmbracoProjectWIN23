@@ -1,5 +1,7 @@
 header {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Add drop shadow
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+
     .container {
         display: flex;
         align-items: center;
@@ -10,13 +12,16 @@ header {
         .logotype {
         }
 
-        .navbar {
-            
+        #navbar {
+            .nav-menu {
+                display: flex;
+                gap: 50px;
+            }
         }
 
         .search {
             i {
-                font-weight:700;
+                font-weight: 700;
             }
         }
 
