@@ -1,0 +1,38 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@{
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+    var customHeadline = Model?.Content.Value<string>("customHeadline") ?? "";
+
+    var itemList = Model?.Content.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("itemList");
+    var successImage = Model?.Content.Value<IPublishedContent>("successImage")?.Url() ?? null;
+
+}
+
+
+    <div id="success-stories">
+        <div class="header">
+            <h6>@sectionTitle</h6>
+            <h2>@customHeadline</h2>
+        </div>
+        <div class="success-items">
+        @if (itemList != null)
+        {
+            @foreach (var item in itemList)
+            {
+                var itemTitle = item?.Content.Value<string>("itemTitle") ?? "";
+                var itemContent = item?.Content.Value<string>("itemContent") ?? "";
+                var textColor = item?.Content?.Value<ColorPickerValueConverter.PickedColor>("textColor")?.Label.ToLower() ?? null;
+
+
+                <div id="success-item">
+                    <h1 style="color:var(--color-@textColor);">@itemTitle</h1>
+                    <p>@itemContent</p>
+                </div>
+            }
+        }
+        </div>
+        <img class="success-image" src="@successImage" alt="@sectionTitle">
+    </div>

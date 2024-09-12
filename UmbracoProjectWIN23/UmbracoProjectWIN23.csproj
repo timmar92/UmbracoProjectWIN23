@@ -19,11 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\media\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\media\breadcrumb-left-image.svg" />
+    <None Include="wwwroot\media\breadcrumb-right-image.svg" />
   </ItemGroup>
 
   <PropertyGroup>

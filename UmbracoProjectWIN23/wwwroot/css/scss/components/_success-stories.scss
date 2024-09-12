@@ -1,0 +1,28 @@
+#success-stories {
+    position: relative;
+    padding-bottom: 350px;
+
+    .header {
+    }
+
+    .success-items {
+        display: flex;
+        justify-content: space-between;
+
+        #success-item {
+            max-width: 300px;
+
+            h1 {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .success-image {
+        z-index: 1;
+        position: absolute;
+        width: 700px;
+        top: 320px;
+        transform: translateX(-50%);
+    }
+}

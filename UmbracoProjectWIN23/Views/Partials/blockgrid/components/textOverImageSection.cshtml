@@ -1,0 +1,41 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+
+	var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+	var coloredText = Model?.Content.Value<string>("coloredText") ?? null;
+	var textColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("textColor")?.Label.ToLower() ?? null;
+	var paragraphContent = Model?.Content.Value<string>("paragraphContent") ?? null;
+    var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
+
+	var buttonLinkText = Model?.Content.Value<string>("buttonLinkText");
+    var buttonLinkUrl = Model?.Content.Value<string>("buttonLinkUrl");
+    var buttonLinkColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("buttonLinkColor")?.Label.ToLower() ?? null;
+}
+
+
+
+<div class="text-over-image">
+	@if (!string.IsNullOrEmpty(sectionBackgroundImage))
+    {
+        <img class="background-image" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+    }
+	<div class="content">
+		<h2>@sectionTitle</h2>
+		<h2 style="color:var(--color-@textColor);">@coloredText</h2>
+		<p>@paragraphContent</p>
+	</div>
+	<div class="button">
+		@if (!string.IsNullOrEmpty(buttonLinkColor))
+		{
+			<a href="@buttonLinkUrl" title="@buttonLinkText" class="btn btn-@buttonLinkColor">@buttonLinkText</a>
+		}
+		else
+		{
+			<a href="@buttonLinkUrl" title="@buttonLinkText" class="btn">@buttonLinkText</a>
+		}
+	</div>
+</div>

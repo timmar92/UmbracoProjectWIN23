@@ -1,4 +1,5 @@
 .page-title {
+    position: relative;
     background-color: var(--color-gray);
     padding-top: 60px;
     padding-bottom: 60px;
@@ -38,9 +39,19 @@
                 &.active {
                     color: var(--color-secondary);
                 }
-
-
             }
         }
+    }
+
+    .left-image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .right-image {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
