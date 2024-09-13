@@ -24,6 +24,10 @@
     <None Include="wwwroot\media\breadcrumb-right-image.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\scss\Pages\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>

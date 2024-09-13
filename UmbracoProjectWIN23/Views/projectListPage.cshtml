@@ -2,9 +2,10 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
 	Layout = "mainLayout.cshtml";
-    ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
-    var selection = Umbraco.Content(Guid.Parse("24fd9156-09ce-4833-97b8-2e58e08a8494")).ChildrenOfType("serviceItemTemplate").Where(x => x.IsVisible());
+    var selection = Umbraco.Content(Guid.Parse("667bb043-73c4-45b2-b2ef-831aadbd9a62"))
+    .ChildrenOfType("projectItemTemplate")
+    .Where(x => x.IsVisible());
 
     var itemsPerPage = 6;
 
@@ -16,12 +17,8 @@
     var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.Title))
-{
-    @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
-}
 
-<section id="our-services">
+<section id="our-projects">
     <div class="container">
         @if (!string.IsNullOrEmpty(Model.Value("customHeadline")?.ToString()))
         {
@@ -29,31 +26,32 @@
                 <h2 class="title">@Model.Value("customHeadline")</h2>
             </div>
         }
-        <div class="services">
+
+        <div class="projects">
             @if (pagedItems != null)
             {
                 @foreach (var item in pagedItems)
                 {
                     var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
                     var preamble = item?.Value<string>("preamble") ?? "";
+                    var datePublished = item?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
 
-                    <a id="service-item" href="@item.Url()">
+                    <a id="project-item" href="@item.Url()">
                         <div class="item">
+                            <img src="@image" alt="@item.Name()">
                             <div class="header">
                                 <h4>@item.Name()</h4>
-                            </div>
-                            <div class="body">
-                                <img src="@image" alt="@item.Name()">
+                                <p class="date">@datePublished</p>
                             </div>
                             <div class="footnote">
-                                <p>@preamble</p>
+                                <p class="preamble">@preamble</p>
+                                <div class="read-more">Read more<i class="fa-regular fa-arrow-right"></i></div>
                             </div>
                         </div>
                     </a>
                 }
             }
         </div>
-
     </div>
 </section>
 <section id="pagination">
@@ -93,19 +91,11 @@
     </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<ul>
+	@foreach (var item in selection)
+	{
+		<li>
+			<a href="@item.Url()">@item.Name()</a>
+		</li>
+	}
+</ul>

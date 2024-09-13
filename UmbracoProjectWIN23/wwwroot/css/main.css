@@ -88,6 +88,18 @@ body {
     grid-column-end: span min(var(--umb-block-grid--area-column-span, 1), var(--umb-block-grid--area-grid-columns));
   }
 }
+#our-services .container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+#our-services .container .headline {
+  margin-top: 70px;
+  text-align: center;
+  max-width: 600px;
+}
+
 .wrapper {
   height: 100vh;
   display: grid;
@@ -258,6 +270,56 @@ h5 {
 
 h6 {
   font-size: 14px;
+}
+
+#pagination {
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+#pagination .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#pagination .container .pages {
+  color: var(--color-dark) !important;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0;
+}
+#pagination .container .pages li {
+  list-style: none;
+}
+#pagination .container .pages li.number a {
+  color: var(--color-dark) !important;
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+#pagination .container .pages li.number.active {
+  border: 1px solid var(--color-border-gray);
+  border-radius: 50%;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#pagination .container .change {
+  margin: 0 10px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--color-dark) !important;
+}
+#pagination .container .change.inactive {
+  color: var(--color-inactive) !important;
 }
 
 #service-item {
