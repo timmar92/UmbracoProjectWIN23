@@ -2,6 +2,7 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
 	Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
     var selection = Umbraco.Content(Guid.Parse("667bb043-73c4-45b2-b2ef-831aadbd9a62"))
     .ChildrenOfType("projectItemTemplate")
@@ -15,8 +16,14 @@
     }
     var totalItems = selection?.Count() ?? 0;
     var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
+
+    var pageTags = Model?.Value<IEnumerable<string>>("projectPageTags") ?? Enumerable.Empty<string>();
 }
 
+@if (!string.IsNullOrEmpty(ViewBag.Title))
+{
+    @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
+}
 
 <section id="our-projects">
     <div class="container">
@@ -38,19 +45,36 @@
 
                     <a id="project-item" href="@item.Url()">
                         <div class="item">
-                            <img src="@image" alt="@item.Name()">
-                            <div class="header">
-                                <h4>@item.Name()</h4>
-                                <p class="date">@datePublished</p>
+                            <div class="thumbnail-image">
+                                <img src="@image" alt="@item.Name()">
                             </div>
-                            <div class="footnote">
-                                <p class="preamble">@preamble</p>
-                                <div class="read-more">Read more<i class="fa-regular fa-arrow-right"></i></div>
+                            <div class="content">
+                                <div class="header">
+                                    <h4>@item.Name()</h4>
+                                    <p class="date"><i class="fa-regular fa-calendar-days"></i>@datePublished</p>
+                                </div>
+                                <div class="footnote">
+                                    <p class="preamble">@preamble</p>
+                                    <div class="read-more">Read more<i class="fa-regular fa-arrow-right"></i></div>
+                                </div>
                             </div>
                         </div>
                     </a>
                 }
             }
+        </div>
+        <div id="project-sidebar">
+            <div class="page-tags">
+                <div class="header">
+                    <h4>Tags</h4>
+                </div>
+                <div class="tags">
+                    @foreach (var tag in pageTags)
+                    {
+                        <a class="page-tag">@tag</a>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -91,11 +115,3 @@
     </div>
 </section>
 
-<ul>
-	@foreach (var item in selection)
-	{
-		<li>
-			<a href="@item.Url()">@item.Name()</a>
-		</li>
-	}
-</ul>
