@@ -1,0 +1,56 @@
+.review-section {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+
+    .container {
+        margin-top: 60px;
+        margin-bottom: 60px;
+
+        .content {
+            margin-right: 400px;
+
+            .header {
+                h6 {
+                }
+
+                h2 {
+                    margin-right: 300px;
+                }
+            }
+
+            .review-text {
+                margin-right: 200px;
+                color: var(--color-primary-light);
+                font-size: 1.15rem;
+                font-weight: 300;
+                line-height: 1.6;
+            }
+
+            .stars {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .reviewer-info {
+                .name {
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                }
+
+                .company {
+                    margin-top: 10px;
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+
+    img {
+        position: absolute;
+        right: 0;
+        //display: none;
+    }
+}

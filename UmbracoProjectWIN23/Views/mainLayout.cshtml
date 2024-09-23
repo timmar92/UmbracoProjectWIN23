@@ -10,6 +10,8 @@
     var siteTagline = settings?.Value<string>("siteTagline") ?? "Financial Solutions";
 
     var pageTitle = !string.IsNullOrEmpty(ViewBag.Title) ? $"{ViewBag.Title} | {siteName} - {siteTagline}" : $"{siteName} - {siteTagline}";
+
+
 }
 
 <!DOCTYPE html>
@@ -32,6 +34,7 @@
         </main>
 
         @await Html.PartialAsync("partials/static/footer.cshtml")
+
     </div>
     
     

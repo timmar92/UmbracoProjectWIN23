@@ -43,3 +43,18 @@
         text-decoration: none;
     }
 }
+
+@mixin btn-tag {
+    font-weight: 400;
+    color: var(--color-primary-light);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-border-gray);
+    background-color: transparent;
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}

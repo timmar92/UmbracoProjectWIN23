@@ -1,0 +1,52 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+    var customHeadline = Model?.Content.Value<string>("customHeadline") ?? "";
+    var memberSlides = Model.Content.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("memberSlides");
+}
+
+@if (memberSlides != null)
+{
+    <div class="team-member-slider">
+        <div class="header">
+            <h6>@sectionTitle</h6>
+            <h2>@customHeadline</h2>
+        </div>
+        <div class="member-slides">
+            <div class="large-row">
+                @foreach (var item in memberSlides.Take(3))
+                {
+                    var selectedImage = item?.Content.Value<IPublishedContent>("selectedImage")?.Url();
+                    var teamMemberName = item?.Content.Value<string>("teamMemberName") ?? "team member";
+                    var teamMemberJob = item?.Content.Value<string>("teamMemberJob") ?? "kitten eater";
+
+                    <div class="item large">
+                        <img src="@selectedImage" alt="@teamMemberName" />
+                        <div class="item-text">
+                            <p>@teamMemberName</p>
+                            <span>@teamMemberJob</span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="small-row">
+                @foreach (var item in memberSlides.Skip(3))
+                {
+                    var selectedImage = item?.Content.Value<IPublishedContent>("selectedImage")?.Url();
+                    var teamMemberName = item?.Content.Value<string>("teamMemberName") ?? "team member";
+                    var teamMemberJob = item?.Content.Value<string>("teamMemberJob") ?? "kitten eater";
+
+                    <div class="item small">
+                        <img src="@selectedImage" alt="@teamMemberName" />
+                        <div class="item-text">
+                            <p>@teamMemberName</p>
+                            <span>@teamMemberJob</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

@@ -3,6 +3,8 @@
 @{
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Name ?? null;
+    var projectTags = Model?.Value<IEnumerable<string>>("projectTags") ?? null;
+    var sidebarForm = Model.Value<bool>("sidebarForm");
 }
 
 @if (!string.IsNullOrEmpty(ViewBag.Title))
@@ -11,6 +13,30 @@
 }
 <section class="project-details">
     <div class="container">
-        @Model.Value("pageContent")
+        <div class="content">
+            @Model.Value("pageContent")
+            @if (projectTags != null)
+            {
+                <div class="project-item-tags">
+                    <p>Tags:</p>
+                    @foreach (var tag in projectTags)
+                    {
+                        <span class="project-tag">@tag</span>
+                    }
+                </div>
+
+            }
+
+        </div>
+        <div class="project-sidebar">
+            <div class="placeholder"></div>
+            @await Html.PartialAsync("partials/static/sidebarProjectList.cshtml")
+            @if (sidebarForm)
+            {
+                @await Html.PartialAsync("partials/static/sidebarForm.cshtml")
+
+            }
+
+        </div>
     </div>
 </section>

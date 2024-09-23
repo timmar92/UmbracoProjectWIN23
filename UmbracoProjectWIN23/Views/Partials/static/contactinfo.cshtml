@@ -1,0 +1,39 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+
+    var officeLocation = settings?.Value<string>("officeLocation") ?? "";
+    var officeEmailAddress = settings?.Value<string>("officeEmailAddress") ?? "";
+    var officePhoneNumber = settings?.Value<string>("officePhoneNumber") ?? "";
+    var officeImage = settings?.Value<IPublishedContent>("officeImage")?.Url() ?? "";
+
+}
+
+
+<section id="contact-information" class="static">
+    <div class="container">
+        <img src="@officeImage" alt="office image" />
+        
+        <div class="content">
+            <div class="header">
+                <h2>Let us know about your next project</h2>
+            </div>
+            <div class="location">
+                <p class="title"><i class="fa-regular fa-location-dot"></i>Office location</p>
+                <p class="info">@officeLocation</p>
+            </div>
+            <div class="phone-number">
+                <p class="title"><i class="fa-regular fa-phone-flip"></i>Phone number</p>
+                <p class="info">@officePhoneNumber</p>
+            </div>
+            <div class="email-address">
+                <p class="title"><i class="fa-regular fa-envelope"></i>Email address</p>
+                <p class="info">@officeEmailAddress</p>
+            </div>
+        </div>
+    </div>
+</section>

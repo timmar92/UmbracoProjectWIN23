@@ -1,0 +1,80 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var modularPage = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "modularPage") ?? null;
+    var projectListPage = modularPage?.Children().FirstOrDefault(x => x.ContentType.Alias == "projectListPage") ?? null;
+
+    var pageTags = projectListPage?.Value<IEnumerable<string>>("projectPageTags") ?? null;
+
+    var selectedTag = Context.Request.Query["tag"].ToString().ToLower();
+    var selection = Umbraco.Content(Guid.Parse("667bb043-73c4-45b2-b2ef-831aadbd9a62"))
+        .ChildrenOfType("projectItemTemplate")
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.Value<DateTime>("datePublished"))
+        .Take(4);
+
+    if (!string.IsNullOrEmpty(selectedTag) && selectedTag != "all")
+    {
+        selection = selection.Where(x => x.Value<IEnumerable<string>>("projectTags")?
+            .Select(tag => tag.ToLower())
+            .Contains(selectedTag) == true);
+    }
+}
+
+
+
+@if (selection != null && selection.Any())
+{
+    <div class="sidebar-projects">
+        <div class="header">
+            <h4>Recent projects</h4>
+        </div>
+        @foreach (var item in selection)
+        {
+            var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+            var preamble = item?.Value<string>("preamble") ?? "";
+            var datePublished = item?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
+
+            <a id="sidebar-project-item" href="@item.Url()">
+                <div class="item">
+                    <div class="thumbnail-image">
+                        <img src="@image" alt="@item.Name()">
+                    </div>
+                    <div class="content">
+                        <div class="header">
+                            <h4>@item.Name()</h4>
+                            <p class="date"><i class="fa-regular fa-calendar-days"></i>@datePublished</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+}
+else
+{
+    <p>No projects found for the selected tag.</p>
+}
+
+<div class="page-tags">
+    <div class="header">
+        <h4>Tags</h4>
+    </div>
+    <div class="tags">
+        @if (pageTags != null)
+        {
+            <button class="sidebar-tag" onclick="location.href='?tag=all'">All</button>
+            @foreach (var tag in pageTags)
+            {
+                <button class="sidebar-tag" onclick="location.href='?tag=@tag'">@tag</button>
+            }
+        }
+        else
+        {
+            <div class="placeholder"></div>
+        }
+
+    </div>
+</div>

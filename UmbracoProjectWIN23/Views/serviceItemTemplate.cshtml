@@ -3,6 +3,12 @@
 @{
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Name ?? null;
+
+    var contactInfo = (Model.Value<bool>("contactInfo"));
+
+    var aboutPageLink = (Model.Value<bool>("aboutPageLink"));
+    var sidebarForm = (Model.Value<bool>("sidebarForm"));
+    var questionForm = (Model.Value<bool>("questionForm"));
 }
 @if (!string.IsNullOrEmpty(ViewBag.Title))
 {
@@ -10,6 +16,40 @@
 }
 <section class="service-details">
     <div class="container">
-        @Model.Value("pageContent")
+        <div class="service-sidebar">
+            @if (aboutPageLink)
+            {
+                <a href="/about" id="about-page-link">
+                    <h4>About us</h4>
+                    <img src="~/media/about-page-link.svg" alt="about page link image" />
+                    <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non </p>
+                </a>
+            }
+            else
+            {
+                <div class="placeholder"></div>
+            }
+
+            @if (sidebarForm)
+            {
+                @await Html.PartialAsync("partials/static/sidebarForm.cshtml")
+
+            }
+        </div>
+        <div class="content">
+            @Model.Value("pageContent")
+        </div>
     </div>
 </section>
+
+@if (questionForm)
+{
+    @await Html.PartialAsync("partials/static/serviceDetailsForm.cshtml")
+
+}
+
+@if (contactInfo)
+{
+    @await Html.PartialAsync("partials/static/contactInfo.cshtml")
+}
+

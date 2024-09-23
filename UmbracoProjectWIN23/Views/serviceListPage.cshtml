@@ -14,6 +14,10 @@
     }
     var totalItems = selection?.Count() ?? 0;
     var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
+
+
+
+    var contactInfo = (Model.Value<bool>("contactInfo"));
 }
 
 @if (!string.IsNullOrEmpty(ViewBag.Title))
@@ -92,6 +96,11 @@
         }
     </div>
 </section>
+
+@if (contactInfo)
+{
+    @await Html.PartialAsync("partials/static/contactInfo.cshtml")
+}
 
 
 

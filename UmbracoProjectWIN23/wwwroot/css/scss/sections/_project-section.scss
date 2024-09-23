@@ -1,0 +1,9 @@
+#project-slider {
+    margin-top: 100px;
+
+    .project-list {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: var(--color-primary-light);
+    }
+}

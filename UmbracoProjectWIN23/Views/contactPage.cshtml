@@ -1,10 +1,17 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContactPage>;
+﻿@* @using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels; *@
+
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
+    // bool.TryParse(ViewData["error_name"]?.ToString()!, out bool error_name);
+    // bool.TryParse(ViewData["error_phone"]?.ToString()!, out bool error_phone);
+    // bool.TryParse(ViewData["error_email"]?.ToString()!, out bool error_email);
 }
 
 
@@ -13,8 +20,48 @@
     @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
 }
 
-<section id="contant-form">
-    <form onsubmit="handleContactFormSubmit(event)" novalidate>
-        @Html.GetBlockListHtml(Model.contactForm)
-    </form>
-</section>
+@await Html.GetBlockGridItemsHtmlAsync(Model.Layout)
+
+
+@* <section id="contant-form">
+    <div class="container">
+        @if (ViewData["success"] == null)
+        {
+            @using (Html.BeginUmbracoForm("HandleSubmit", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
+            {
+                <div class="form-input-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input id="name" name="name" type="text" placeholder="Name" class="form-input" value="@ViewData["name"]" >
+                    <span class="form-input-error @((error_name) ? "form-invalid-input": null)">You must enter your name</span>
+                </div>
+
+                <div class="form-input-group">
+                    <label class="form-label" for="phone">Phone</label>
+                    <input id="phone" name="phone" type="text" placeholder="Phone" class="form-input" value="@ViewData["phone"]" >
+                    <span class="form-input-error @((error_phone) ? "form-invalid-input": null)">You must enter your phone number</span>
+                </div>
+
+                <div class="form-input-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="Email Address" class="form-input" value="@ViewData["email"]" >
+                    <span class="form-input-error @((error_email) ? "form-invalid-input": null)">You must enter your email address</span>
+                </div>
+
+                <div class="form-input-group">
+                    <label class="form-label" for="dropdown">Option</label>
+                    <select id="Option" name="Option" class="form-input">
+                        <option value="Financial consulting">Financial consulting</option>
+                        <option value="Cute kittens">Cute kittens</option>
+                        <option value="Secret base locations">Secret base locations</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit</button>
+            }
+        }
+        else
+        {
+            <div class="success-message">@ViewData["success"]</div>
+        }
+    </div>
+</section> *@

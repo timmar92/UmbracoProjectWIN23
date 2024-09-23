@@ -1,0 +1,64 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	
+
+        
+    bool.TryParse(ViewData["error_name"]?.ToString()!, out bool error_name);
+    bool.TryParse(ViewData["error_question"]?.ToString()!, out bool error_question);
+    bool.TryParse(ViewData["error_email"]?.ToString()!, out bool error_email);
+}
+
+<section id="service-details-form">
+    <div class="container">
+        @if (ViewData["success"] == null)
+        {
+            <div class="form-header">
+                <h4>Have a question ?</h4>
+            </div>
+            <div class="form-content">
+                @using (Html.BeginUmbracoForm("HandleServiceForm", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
+                {
+                    <div class="form-fields">
+                        <div class="name-email">
+                            <div class="form-input-group">
+                                <label class="form-label" for="name">Name</label>
+                                <input id="name" name="name" type="text" placeholder="Name" class="form-input" value="@ViewData["name"]">
+                                @if (error_name)
+                                {
+                                    <span class="form-input-error form-invalid-input">You must enter your name</span>
+                                }
+                            </div>
+
+                            <div class="form-input-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input id="email" name="email" type="email" placeholder="Email Address" class="form-input" value="@ViewData["email"]">
+                                @if (error_email)
+                                {
+                                    <span class="form-input-error form-invalid-input">You must enter your email address</span>
+                                }
+                            </div>
+
+                        </div>
+                        <div class="form-input-group">
+                            <label class="form-label" for="question">Question</label>
+                            <textarea id="question" name="question" placeholder="Question" class="form-input" value="@ViewData["question"]"></textarea>
+                            @if (error_question)
+                            {
+                                <span class="form-input-error form-invalid-input">You must enter a question</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-button">
+                        <button type="submit" class="btn-primary">Submit</button>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="success-message">@ViewData["success"]</div>
+        }
+    </div>
+</section>

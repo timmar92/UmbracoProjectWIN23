@@ -1,1 +1,15 @@
-﻿
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var buttonText = Model?.Content.Value<string>("buttonText");
+    var buttonType = Model?.Content.Value<string>("buttonType");
+
+    var buttonColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("buttonColor")?.Label.ToLower() ?? null;
+}
+
+<div id="_@buttonText" class="form-input-group">
+    <button type="@buttonType" class="btn btn-@buttonColor">@buttonText</button>
+</div>

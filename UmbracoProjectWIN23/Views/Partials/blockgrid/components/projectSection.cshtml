@@ -1,0 +1,47 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+	var random = new Random();
+	var selection = Umbraco.Content(Guid.Parse("667bb043-73c4-45b2-b2ef-831aadbd9a62"))
+	.ChildrenOfType("projectItemTemplate")
+	.Where(x => x.IsVisible())
+    .OrderBy(x => random.Next())
+    .Take(5);
+
+	var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+	var customHeadline = Model?.Content.Value<string>("customHeadline") ?? "";
+}
+
+<section id="project-slider">
+	<div class="container">
+		<div class="header">
+			<h6>@sectionTitle</h6>
+			<h2>@customHeadline</h2>
+		</div>
+	</div>
+	<div class="project-list">
+		@foreach (var item in selection)
+		{
+			var thumbnailImage = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+			var pageTitle = item?.Value<string>("pageTitle") ?? "";
+			var projectTags = item?.Value<IEnumerable<string>>("projectTags") ?? Enumerable.Empty<string>();
+			var firstTag = projectTags.FirstOrDefault();
+
+
+			<a id="project-slider-item" href="@item.Url()">
+				<img src="@thumbnailImage" alt="@pageTitle" />
+				<div class="content">
+					<div class="text">
+						<h6>@pageTitle</h6>
+						<p>@firstTag</p>
+					</div>
+					<div class="arrow">
+						<i class="fa-regular fa-angle-right"></i>
+					</div>
+				</div>
+			</a>
+		}
+	</div>
+</section>

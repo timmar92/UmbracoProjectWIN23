@@ -1,0 +1,277 @@
+.form-input-group {
+    label {
+        display: none;
+    }
+
+    .form-input {
+        border: 2px solid var(--color-border-gray);
+        border-radius: 4px;
+        padding: 15px;
+        font-size: 16px;
+        width: 100%;
+        transition: border-color 0.3s;
+
+        &:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+    }
+
+    textarea {
+        border: 2px solid var(--color-border-gray);
+        border-radius: 4px;
+        padding: 15px;
+        font-size: 16px;
+        width: 100%;
+        transition: border-color 0.3s;
+        resize: none;
+
+        &::placeholder {
+            @include text;
+        }
+
+        &:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+    }
+
+    .form-select {
+        border: 2px solid var(--color-border-gray);
+        border-radius: 4px;
+        padding: 15px;
+        font-size: 16px;
+        width: 100%;
+        transition: border-color 0.3s;
+        appearance: none;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" fill="%234F5955"/></svg>') no-repeat calc(100% - 15px) center;
+        background-size: 12px 12px;
+
+        &:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+    }
+
+    .form-input-error {
+        color: var(--color-error);
+        font-weight: 300;
+        font-size: 0.9rem;
+    }
+}
+
+
+#contant-form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 80px;
+
+    .container {
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        background-color: var(--color-light);
+        display: flex;
+        flex-direction: column;
+        padding: 60px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+
+        .form-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: 260px;
+            margin-right: 260px;
+            padding-bottom: 40px;
+
+            h6 {
+                font-size: 1.2rem;
+            }
+        }
+
+        .form-content {
+            display: flex;
+            flex-direction: column;
+
+            .form-fields {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .form-button {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+
+#service-details-form {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    .container {
+        .form-content {
+            .form-fields {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .name-email {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                }
+
+                .form-input-group {
+                    flex: 1;
+                }
+            }
+
+            .form-input-group {
+                textarea {
+                    height: 200px;
+                }
+            }
+
+            .form-button {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+#homepage-form {
+    position: absolute;
+    top: -200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Add this line for drop shadow
+    .form-header {
+        padding-top: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        background-color: var(--color-primary);
+
+
+        h3 {
+            color: var(--color-accent);
+        }
+    }
+
+    .form-content {
+        padding-left: 30px;
+        padding-right: 30px;
+
+        p {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-button {
+            width: 100%;
+            margin-top: 30px;
+            padding-bottom: 40px;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+
+    .success-message {
+        position:absolute;
+        top: 350px;
+        text-align:start;
+        width: 500px;
+        color:green;
+    }
+}
+
+#sidebar-form {
+    position: relative;
+    background-color: var(--color-primary);
+    z-index: 1;
+    width: 100%;
+    border-radius: 5px;
+    width: 300px;
+
+
+    .form-header {
+        padding-top: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        h4 {
+            color: var(--color-accent);
+        }
+
+        p {
+            color: var(--color-light);
+        }
+    }
+
+    .form-content {
+        padding-top: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+
+
+        .form-fields {
+            z-index: 3;
+            padding-bottom: 30px;
+
+            .form-input-group {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                .icon {
+                    color: var(--color-dark);
+                    font-size: 1.3rem;
+                    position: absolute;
+                    right: 20px;
+                }
+            }
+        }
+
+        .form-button {
+            display: none;
+        }
+
+        img {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            right: 0;
+            pointer-events: none;
+        }
+    }
+
+    .success-message {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        color: var(--color-light);
+    }
+}
+
+

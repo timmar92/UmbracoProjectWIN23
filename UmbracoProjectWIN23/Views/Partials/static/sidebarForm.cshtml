@@ -1,0 +1,44 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	
+    bool.TryParse(ViewData["error_email"]?.ToString()!, out bool error_email);
+}
+
+
+<div id="sidebar-form">
+    @if (ViewData["success"] == null)
+    {
+        <div class="form-header">
+            <h4>How can we help you?</h4>
+            <p>online support 24/7, we are here to help you</p>
+        </div>
+        <div class="form-content">
+            @using (Html.BeginUmbracoForm("HandleSidebarForm", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
+            {
+                <div class="form-fields">
+                    <div class="form-input-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Email Address" class="form-input" value="@ViewData["email"]">
+                        <span class="icon">
+                            <i class="fa-light fa-envelope"></i>
+                        </span>
+                        @if (error_email)
+                        {
+                            <span class="form-input-error form-invalid-input">You must enter your email address</span>
+                        }
+                    </div>
+                </div>
+                <div class="form-button">
+                    <button type="submit" class="btn-primary">Submit</button>
+                </div>
+                <img src="~/media/Mail.svg" alt="envelope-image" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="success-message">@ViewData["success"]</div>
+    }
+</div>

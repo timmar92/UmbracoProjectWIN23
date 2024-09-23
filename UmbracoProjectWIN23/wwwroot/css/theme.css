@@ -842,6 +842,7 @@ span {
   --color-default: #535656;
   --color-dark: #171717;
   --color-primary: #4F5955;
+  --color-primary-transparent: rgba(79, 89, 85, 0.5);
   --color-primary-light: #6d7573;
   --color-primary-dark: #2f3331;
   --color-secondary: #D9C3A9;
@@ -849,6 +850,7 @@ span {
   --color-gray: #F7F7F7;
   --color-light: #FFFFFF;
   --color-inactive: #dedede;
+  --color-error: #e00000;
   --color-border-dark: #333333;
   --color-border-dark-transparent: rgba(51, 51, 51 0.10);
   --color-border-primary: #424946;

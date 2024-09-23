@@ -1,0 +1,69 @@
+.service-details {
+
+
+    .container {
+        display: flex;
+        margin-top: 60px;
+        gap: 40px;
+
+
+        .content {
+            padding-bottom: 30px;
+
+            img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+            ul {
+
+
+                li {
+                    margin-bottom: 20px;
+
+                    &::marker {
+                        color: var(--color-secondary);
+                    }
+                }
+            }
+        }
+
+        .service-sidebar {
+            width: 350px;
+            border-right: 1px solid var(--color-border-gray);
+
+
+            .placeholder {
+                width: 300px;
+            }
+        }
+    }
+}
+
+#about-page-link {
+    max-width: 300px;
+    margin-right: 40px;
+    overflow: hidden;
+    margin-bottom: 50px;
+
+    img {
+        transition: transform 0.5s ease;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 14px;
+        color: var(--color-primary);
+    }
+
+
+
+    &:hover {
+        text-decoration: none;
+
+        img {
+            transform: scale(1.2);
+        }
+    }
+}

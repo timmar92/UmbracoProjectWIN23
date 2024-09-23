@@ -1,1 +1,21 @@
-﻿
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var labelText = Model?.Content.Value<string>("labelText");
+    var MultipleTextString = Model?.Content.Value<IEnumerable<string>>("MultipleTextString");
+}
+
+<div id="form-dropdown" class="form-input-group">
+    <label class="form-label" for="dropdown">@labelText</label>
+        <select id="dropdown" name="dropdown">
+        @if (MultipleTextString != null)
+        {
+            @foreach (var item in MultipleTextString)
+            {
+                <option value="@item">@item</option>
+            }
+        }
+    </select>
+</div>

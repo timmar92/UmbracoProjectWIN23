@@ -8,3 +8,28 @@
     width: 55px;
     font-size: 1.8rem;
 }
+
+.sidebar-tag {
+    @include btn-tag;
+    padding: 10px;
+    border-radius: 25px;
+    transition: 0.3s ease;
+
+    &:hover {
+        color: var(--color-primary);
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+    }
+}
+
+.project-tag {
+    @include btn-tag;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 7px;
+    border-radius: 25px;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    cursor: auto;
+}

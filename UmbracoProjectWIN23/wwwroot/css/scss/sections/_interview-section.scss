@@ -1,0 +1,28 @@
+.interview {
+    display: flex;
+    gap: 60px;
+
+    .image {
+
+        img {
+        }
+
+        p {
+            margin-top: 10px;
+        }
+    }
+
+    .content {
+
+        .quote {
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .rich-text {
+            font-size: 15px;
+        }
+    }
+}

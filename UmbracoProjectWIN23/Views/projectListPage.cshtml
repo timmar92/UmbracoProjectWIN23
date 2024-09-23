@@ -4,11 +4,20 @@
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
+
+    var selectedTag = Context.Request.Query["tag"].ToString().ToLower();
     var selection = Umbraco.Content(Guid.Parse("667bb043-73c4-45b2-b2ef-831aadbd9a62"))
     .ChildrenOfType("projectItemTemplate")
     .Where(x => x.IsVisible());
 
-    var itemsPerPage = 6;
+    if (!string.IsNullOrEmpty(selectedTag) && selectedTag != "all")
+    {
+        selection = selection.Where(x => x.Value<IEnumerable<string>>("projectTags")?
+        .Select(tag => tag.ToLower())
+        .Contains(selectedTag) == true);
+    }
+
+    var itemsPerPage = 4;
 
     if (!int.TryParse(Context.Request.Query["page"], out int currentPage))
     {
@@ -17,7 +26,12 @@
     var totalItems = selection?.Count() ?? 0;
     var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
 
-    var pageTags = Model?.Value<IEnumerable<string>>("projectPageTags") ?? Enumerable.Empty<string>();
+    var pageTags = Model?.Value<IEnumerable<string>>("projectPageTags") ?? null;
+
+
+    var contactInfo = (Model.Value<bool>("contactInfo"));
+    var sidebarForm = Model.Value<bool>("sidebarForm");
+
 }
 
 @if (!string.IsNullOrEmpty(ViewBag.Title))
@@ -33,7 +47,6 @@
                 <h2 class="title">@Model.Value("customHeadline")</h2>
             </div>
         }
-
         <div class="projects">
             @if (pagedItems != null)
             {
@@ -62,6 +75,47 @@
                     </a>
                 }
             }
+            else
+            {
+                <p>No projects found or no projects found for the selected tag.</p>
+            }
+            <div id="pagination">
+                <div class="container">
+                    @if (currentPage > 1)
+
+                    {
+                        <a href="?page=@(currentPage - 1)" class="change">Prev</a>
+                    }
+
+                    else
+
+                    {
+                        <span class="change inactive">Prev</span>
+                    }
+
+                    <ul class="pages">
+                        @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+                        {
+                            <li class="@((i == currentPage) ? "number active" : "number")">
+                                <a href="?page=@i">@i</a>
+                            </li>
+                        }
+                    </ul>
+
+                    @if (currentPage < Math.Ceiling((decimal)totalItems / itemsPerPage))
+
+                    {
+                        <a href="?page=@(currentPage + 1)" class="change">Next</a>
+                    }
+
+                    else
+
+                    {
+                        <span class="change inactive">Next</span>
+                    }
+                </div>
+            </div>
+
         </div>
         <div id="project-sidebar">
             <div class="page-tags">
@@ -69,49 +123,34 @@
                     <h4>Tags</h4>
                 </div>
                 <div class="tags">
-                    @foreach (var tag in pageTags)
+                    @if (pageTags != null)
                     {
-                        <a class="page-tag">@tag</a>
+                        <button class="sidebar-tag" onclick="location.href='?tag=all'">All</button>
+                        @foreach (var tag in pageTags)
+                        {
+                            <button class="sidebar-tag" onclick="location.href='?tag=@tag'">@tag</button>
+                        }
                     }
+                    else
+                    {
+                            <div class="placeholder"></div>
+                    }
+
                 </div>
             </div>
+            @if (sidebarForm)
+            {
+                @await Html.PartialAsync("partials/static/sidebarForm.cshtml")
+
+            }
         </div>
     </div>
 </section>
-<section id="pagination">
-    <div class="container">
-        @if (currentPage > 1)
 
-        {
-            <a href="?page=@(currentPage - 1)" class="change">Prev</a>
-        }
 
-        else
 
-        {
-            <span class="change inactive">Prev</span>
-        }
-
-        <ul class="pages">
-            @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
-            {
-                <li class="@((i == currentPage) ? "number active" : "number")">
-                    <a href="?page=@i">@i</a>
-                </li>
-            }
-        </ul>
-
-        @if (currentPage < Math.Ceiling((decimal)totalItems / itemsPerPage))
-
-        {
-            <a href="?page=@(currentPage + 1)" class="change">Next</a>
-        }
-
-        else
-
-        {
-            <span class="change inactive">Next</span>
-        }
-    </div>
-</section>
+@if (contactInfo)
+{
+    @await Html.PartialAsync("partials/static/contactInfo.cshtml")
+}
 

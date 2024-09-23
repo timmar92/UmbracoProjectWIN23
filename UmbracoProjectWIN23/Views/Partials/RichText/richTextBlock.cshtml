@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.RichTextBlockItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var blockTitle = Model?.Content.Value("blockTitle").ToString().ToLower().Trim().Replace(" ", "-");
+    var richTextContent= Model?.Content.Value("richTextContent") ?? null;
+}
+
+<div class="@blockTitle">
+    @richTextContent
+</div>
