@@ -57,6 +57,7 @@ namespace UmbracoProjectWIN23.Controllers
             catch (Exception ex)
             {
                 ViewData["error"] = "There was an error sending the email.";
+                Console.WriteLine(ex.Message);
                 return CurrentUmbracoPage();
             }
 
@@ -102,6 +103,8 @@ namespace UmbracoProjectWIN23.Controllers
             catch (Exception ex)
             {
                 ViewData["error"] = "There was an error sending the email.";
+                Console.WriteLine(ex.Message);
+
                 return CurrentUmbracoPage();
             }
 
@@ -147,6 +150,8 @@ namespace UmbracoProjectWIN23.Controllers
             catch (Exception ex)
             {
                 ViewData["error"] = "There was an error sending the email.";
+                Console.WriteLine(ex.Message);
+
                 return CurrentUmbracoPage();
             }
 
@@ -188,6 +193,8 @@ namespace UmbracoProjectWIN23.Controllers
             catch (Exception ex)
             {
                 ViewData["error"] = "There was an error sending the email.";
+                Console.WriteLine(ex.Message);
+
                 return CurrentUmbracoPage();
             }
 
