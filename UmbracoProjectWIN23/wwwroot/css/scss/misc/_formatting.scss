@@ -3,10 +3,18 @@
 
 .spacing-top {
     padding-top: 120px;
+
+    @include phone {
+        padding-top: 60px;
+    }
 }
 
 .spacing-bottom {
     padding-bottom: 120px;
+
+    @include phone {
+        padding-bottom: 60px;
+    }
 }
 
 .center {

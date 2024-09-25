@@ -6,8 +6,18 @@
         margin-top: 60px;
         gap: 40px;
 
+        @include phone {
+            flex-direction: column;
+        }
+
+
+
         .content {
             padding-bottom: 30px;
+
+            @include phone {
+                padding-bottom: 0;
+            }
 
             h4 {
                 font-size: 18px;
@@ -40,12 +50,20 @@
                 display: flex;
                 gap: 20px;
 
+                @include phone {
+                    flex-direction: column;
+                }
+
                 img {
                     width: 100%;
                 }
 
                 .content {
                     max-width: 60%;
+
+                    @include phone {
+                        max-width: 100%;
+                    }
                 }
             }
 
@@ -54,6 +72,9 @@
                 gap: 10px;
                 align-items: center;
 
+                @include phone {
+                    margin-top: -40px;
+                }
 
                 p {
                     font-weight: 700;
@@ -71,6 +92,18 @@
             align-items: center;
             gap: 30px;
             padding-left: 30px;
+
+            @include phone {
+                display: none;
+            }
+
+            @include tablet {
+                display: none;
+            }
+
+            @include desktop {
+                display: block;
+            }
 
 
             .page-tags {

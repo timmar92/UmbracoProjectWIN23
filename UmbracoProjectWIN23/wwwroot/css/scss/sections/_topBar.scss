@@ -1,15 +1,33 @@
 #topbar {
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    @include phone {
+        display: none;
+    }
 
-        .address {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            @include text;
+    @include desktop {
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .address {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                @include text;
+            }
         }
+    }
 
+    @include tablet {
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
+            .address {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                @include text;
+            }
+        }
     }
 }

@@ -71,6 +71,18 @@
     margin: 0;
     padding-bottom: 80px;
 
+    @include phone {
+        padding-bottom: 0;
+    }
+
+    @include tablet {
+        padding-bottom: 0;
+    }
+
+    @include desktop {
+        padding-bottom: 80px;
+    }
+
     .container {
         position: absolute;
         bottom: 0;
@@ -80,6 +92,23 @@
         flex-direction: column;
         padding: 60px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        @include phone {
+            position: initial;
+            padding: 10px;
+        }
+
+        @include tablet {
+            position: absolute;
+            bottom: 0px;
+            padding: 20px;
+        }
+
+        @include desktop {
+            position: absolute;
+            padding: 60px;
+            bottom: 0;
+        }
 
 
         .form-header {
@@ -92,8 +121,32 @@
             margin-right: 260px;
             padding-bottom: 40px;
 
+            @include phone {
+                margin-left: 0;
+                margin-right: 0;
+                padding-bottom: 20px;
+            }
+
+            @include tablet {
+                margin-left: 0;
+                margin-right: 0;
+                padding-bottom: 20px;
+            }
+
+            @include desktop {
+                margin-left: 260px;
+                margin-right: 260px;
+                padding-bottom: 40px;
+            }
+
             h6 {
                 font-size: 1.2rem;
+            }
+
+            h2 {
+                @include phone {
+                    font-size: 1.9rem;
+                }
             }
         }
 
@@ -105,12 +158,20 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
+
+                @include phone {
+                    grid-template-columns: 1fr;
+                }
             }
 
             .form-button {
                 display: flex;
                 justify-content: center;
                 margin-top: 20px;
+
+                @include phone {
+                    margin-bottom: 20px;
+                }
             }
         }
     }
@@ -154,13 +215,50 @@
 #homepage-form {
     position: absolute;
     top: -200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Add this line for drop shadow
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    @include phone {
+        position: initial;
+        margin-top: 30px;
+    }
+
+    @include tablet {
+        position: initial;
+        margin-top: 30px;
+    }
+
+    @include desktop {
+        position: absolute;
+        margin-top: initial;
+    }
+
     .form-header {
         padding-top: 30px;
         padding-left: 30px;
         padding-right: 30px;
         padding-bottom: 20px;
         background-color: var(--color-primary);
+
+        @include phone {
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+
+        @include tablet {
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+
+        @include desktop {
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 20px;
+        }
 
 
         h3 {
@@ -172,22 +270,41 @@
         padding-left: 30px;
         padding-right: 30px;
 
+        @include phone {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
         p {
             margin-top: 30px;
             margin-bottom: 30px;
             font-size: 14px;
+
+            @include phone {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
         }
 
         .form-fields {
             display: flex;
             flex-direction: column;
             gap: 25px;
+
+            @include phone {
+                gap: 15px;
+            }
         }
 
         .form-button {
             width: 100%;
             margin-top: 30px;
             padding-bottom: 40px;
+
+            @include phone {
+                margin-top: 20px;
+                padding-bottom: 25px;
+            }
 
             button {
                 width: 100%;
@@ -196,11 +313,11 @@
     }
 
     .success-message {
-        position:absolute;
+        position: absolute;
         top: 350px;
-        text-align:start;
+        text-align: start;
         width: 500px;
-        color:green;
+        color: green;
     }
 }
 
@@ -211,6 +328,18 @@
     width: 100%;
     border-radius: 5px;
     width: 300px;
+
+    @include phone {
+        display: none;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include desktop {
+        display: block;
+    }
 
 
     .form-header {

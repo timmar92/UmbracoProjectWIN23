@@ -1,9 +1,41 @@
 #project-slider {
+
+
+    .container {
+        .header {
+            h2 {
+                @include phone {
+                    font-size: 1.9rem;
+                }
+            }
+        }
+    }
+
     margin-top: 100px;
 
     .project-list {
-        display: flex;
-        justify-content: space-evenly;
-        background-color: var(--color-primary-light);
+        //display: flex;
+        //justify-content: space-evenly;
+        //background-color: var(--color-primary-light);
+
+        @include phone {
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: initial;
+            gap: 20px;
+        }
+
+        @include tablet {
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: initial;
+            gap: 20px;
+        }
+
+        @include desktop {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: var(--color-primary-light);
+        }
     }
 }

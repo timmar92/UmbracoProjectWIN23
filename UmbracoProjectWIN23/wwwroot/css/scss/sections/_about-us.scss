@@ -1,14 +1,39 @@
 #about-us {
-    position:relative;
-    blockquote {
-        @include text;
-        margin-bottom: 25px;
-        font-size: 1.25rem;
-        font-weight: 300;
+    position: relative;
+
+    @include phone {
+        display: flex;
+        flex-direction: column;
     }
 
-    img {
-        margin-top: 20px;
-        margin-bottom: 10px;
+
+    .container {
+        h2 {
+            @include phone {
+                font-size: 1.7rem
+            }
+        }
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        blockquote {
+            @include text;
+            margin-bottom: 25px;
+            font-size: 1.25rem;
+            font-weight: 300;
+
+            @include phone {
+                font-size: 1.1rem
+            }
+        }
+
+        img {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
     }
 }

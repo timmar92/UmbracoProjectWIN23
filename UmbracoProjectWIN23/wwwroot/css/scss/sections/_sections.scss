@@ -11,8 +11,20 @@
 @import "_review-section.scss";
 @import "_team-members-section.scss";
 @import "_project-section.scss";
+@import "_trusted.scss";
 
 
 
 @import "_partners.scss";
 @import "_footer.scss";
+
+
+@include phone {
+    .background-image {
+        max-width: 100%;
+    }
+}@include tablet {
+    .background-image {
+        max-width: 100%;
+    }
+}

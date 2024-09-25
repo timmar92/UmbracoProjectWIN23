@@ -1,4 +1,7 @@
 #service {
+    @include phone {
+    }
+
     .container {
         .services {
             display: flex;
@@ -6,12 +9,32 @@
             justify-content: center;
             align-items: center;
 
+            @include tablet {
+                overflow: hidden;
+            }
+
             .header {
                 max-width: 100%;
                 width: 600px;
+
+                @include phone {
+                    h2 {
+                        font-size: 1.9rem;
+                    }
+                }
             }
 
+            .services-list {
+                display: grid;
 
+                @include tablet {
+                    grid-template-columns: 1fr 1fr;
+                }
+                
+                @include desktop {
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }
         }
     }
 }

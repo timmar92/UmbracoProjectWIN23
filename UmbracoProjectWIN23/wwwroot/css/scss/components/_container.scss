@@ -10,6 +10,10 @@
 }
 
 .container {
+    @include phone {
+        max-width: 540px
+    }
+
     @include tablet {
         max-width: 720px;
     }

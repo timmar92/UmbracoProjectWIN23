@@ -3,19 +3,102 @@
     display: flex;
     overflow: hidden;
 
+    @include phone {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    @include desktop {
+    }
+
+    @include tablet {
+        flex-direction: column-reverse;
+    }
+
+
+
     .container {
         margin-top: 60px;
         margin-bottom: 60px;
 
+        @include phone {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        @include tablet {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        @include desktop {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
         .content {
             margin-right: 400px;
 
+            @include phone {
+                margin-right: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @include tablet {
+                margin-right: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @include desktop {
+                margin-right: 400px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: start;
+            }
+
             .header {
                 h6 {
+                    @include phone {
+                        text-align: center;
+                    }
+
+                    @include tablet {
+                        text-align: center;
+                    }
+
+                    @include desktop {
+                        text-align: start;
+                    }
                 }
 
                 h2 {
                     margin-right: 300px;
+
+                    @include phone {
+                        margin-right: 0;
+                        text-align: center;
+                        font-size: 1.9rem;
+                    }
+
+                    @include tablet {
+                        margin-right: 0;
+                        text-align: center;
+                        font-size: 1.9rem;
+                    }
+
+                    @include desktop {
+                        margin-right: 300px;
+                        text-align: start;
+                        font-size: 40px;
+                    }
                 }
             }
 
@@ -25,6 +108,24 @@
                 font-size: 1.15rem;
                 font-weight: 300;
                 line-height: 1.6;
+
+                @include phone {
+                    margin-right: 0;
+                    text-align: center;
+                    font-size: 1rem;
+                }
+
+                @include tablet {
+                    margin-right: 0;
+                    text-align: center;
+                    font-size: 1rem;
+                }
+
+                @include desktop {
+                    margin-right: 200px;
+                    font-size: 1.15rem;
+                    text-align: start;
+                }
             }
 
             .stars {
@@ -33,6 +134,13 @@
             }
 
             .reviewer-info {
+                @include phone {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+
                 .name {
                     font-size: 0.9rem;
                     font-weight: 600;
@@ -43,14 +151,32 @@
                     font-size: 1.3rem;
                     font-weight: 300;
                     font-style: italic;
+
+                    @include phone {
+                        margin-top: 0;
+                    }
+
+
                 }
             }
         }
     }
 
     img {
-        position: absolute;
-        right: 0;
-        //display: none;
+        //position: absolute;
+        //right: 0;
+
+        @include phone {
+            display: none;
+        }
+
+        @include tablet {
+            position: initial;
+        }
+
+        @include desktop {
+            position: absolute;
+            right: 0;
+        }
     }
 }

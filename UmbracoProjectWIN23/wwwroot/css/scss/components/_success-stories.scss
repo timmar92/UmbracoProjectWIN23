@@ -2,18 +2,41 @@
     position: relative;
     padding-bottom: 350px;
 
+    @include phone {
+        padding-bottom: 40px;
+        margin-bottom: 20px;
+    }
+
     .header {
+        @include phone {
+            h2 {
+                font-size: 1.9rem;
+            }
+        }
     }
 
     .success-items {
         display: flex;
         justify-content: space-between;
 
+        @include phone {
+            flex-direction: column;
+        }
+
         #success-item {
             max-width: 300px;
 
+            @include phone {
+                padding-bottom: 10px;
+                border-bottom: 1px solid;
+            }
+
             h1 {
                 margin-bottom: 0;
+
+                @include phone {
+                    font-size: 3rem;
+                }
             }
         }
     }
@@ -24,5 +47,11 @@
         width: 700px;
         top: 320px;
         transform: translateX(-50%);
+        overflow:hidden;
+
+        @include phone {
+            top: 465px;
+            width: 100%;
+        }
     }
 }

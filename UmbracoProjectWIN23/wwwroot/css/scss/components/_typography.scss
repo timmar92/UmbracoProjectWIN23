@@ -12,10 +12,34 @@ h6 {
 
 h1 {
     font-size: 70px;
+
+    @include phone {
+        font-size: 1.9rem;
+    }
+
+    @include tablet {
+        font-size: 1.9rem;
+    }
+
+    @include desktop {
+        font-size: 70px;
+    }
 }
 
 h2 {
     font-size: 40px;
+
+    @include phone {
+        font-size: 1.9rem;
+    }
+
+    @include tablet {
+        font-size: 1.9rem;
+    }
+
+    @include desktop {
+        font-size: 40px;
+    }
 }
 
 h3 {

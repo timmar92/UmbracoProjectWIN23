@@ -1,5 +1,9 @@
 #trusted {
+    @include phone {
+        
+    }
+
     .container {
-        object-fit: cover;
+        //object-fit: cover;
     }
 }

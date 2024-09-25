@@ -2,24 +2,43 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 9999;
 
+
     .container {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding-top: 17px;
         padding-bottom: 17px;
+        width: 100%;
+        overflow: hidden;
+
+        @include phone {
+            flex-direction: column;
+        }
 
         .logotype {
         }
 
         #navbar {
+            @include phone {
+                padding-top: 20px;
+            }
+
             .nav-menu {
                 display: flex;
                 gap: 50px;
+
+                @include phone {
+                    gap: 30px;
+                }
             }
         }
 
         .search {
+            @include phone {
+                display: none;
+            }
+
             i {
                 font-weight: 700;
             }

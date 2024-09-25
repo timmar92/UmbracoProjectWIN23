@@ -1,10 +1,14 @@
 #success {
     position: relative;
+
+    @include phone {
+    }
+
     .background-image {
         position: absolute;
         top: 0;
     }
-    .container {
 
+    .container {
     }
 }

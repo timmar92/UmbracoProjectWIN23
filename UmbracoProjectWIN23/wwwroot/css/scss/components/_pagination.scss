@@ -3,11 +3,17 @@
     padding-bottom: 50px;
 
 
+
+
     .container {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 20px;
+
+        @include phone {
+            flex-direction:row;
+        }
 
         .pages {
             color: var(--color-dark) !important;

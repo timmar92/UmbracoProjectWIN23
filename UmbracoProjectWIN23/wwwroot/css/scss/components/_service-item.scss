@@ -6,6 +6,20 @@
     margin: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
+    @include phone {
+        margin: 0;
+        margin-bottom: 15px;
+        max-width: 100%;
+    }
+
+    @include tablet {
+        max-width: 320px;
+    }
+
+    @include desktop {
+        max-width: initial;
+    }
+
     .item {
         .header {
             text-align: start;
@@ -16,6 +30,12 @@
                 margin-left: 1.5rem;
                 margin-bottom: 1.5rem;
                 padding-top: 30px;
+
+                @include phone {
+                    margin-left: 1.5rem;
+                    margin-bottom: 20px;
+                    padding-top: 20px;
+                }
             }
         }
 
@@ -30,12 +50,22 @@
                 display: block;
                 margin: 0 auto;
                 transition: transform 0.5s ease;
+
+                @include phone {
+                    width: 100%;
+                    height: 150px;
+                    object-fit: cover;
+                }
             }
         }
 
         .footnote {
             text-align: start;
             transition: transform 0.5s ease;
+
+            @include phone {
+                display: none;
+            }
 
             p {
                 color: var(--color-primary) !important;

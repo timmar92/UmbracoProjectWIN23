@@ -2,6 +2,10 @@
     margin-right: 40px;
     border-bottom: 1px solid var(--color-border-gray);
 
+    @include phone {
+        margin-right: 0;
+    }
+
     &:nth-last-child(-n+2) {
         border-bottom: none;
     }
@@ -12,13 +16,37 @@
         height: 200px;
         padding-bottom: 20px;
 
+        @include phone {
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
         .thumbnail-image {
             display: flex;
             width: 350px;
 
+            @include phone {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            @include tablet {
+                width: 250px;
+            }
+
+            @include desktop {
+                width: 350px;
+            }
+
             img {
                 width: 100%;
                 object-fit: cover;
+
+                @include phone {
+                    height: 200px;
+                    object-position: center -10px;
+                }
             }
         }
 
@@ -30,14 +58,39 @@
             display: flex;
             flex-direction: column;
 
+            @include phone {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                margin-left: 0;
+                background-color: var(--color-primary-transparent);
+            }
+
             .header {
+
+                @include phone {
+                    margin-left: 10px;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                }
+
                 h4 {
                     font-weight: 600;
                     margin-bottom: -7px;
+
+                    @include phone {
+                        font-size: 1.3rem;
+                        margin-bottom: 0;
+                        color: var(--color-accent);
+                    }
                 }
 
                 .date {
                     color: #bfbfbf !important;
+
+                    @include phone {
+                        color: var(--color-accent) !important;
+                    }
 
                     i {
                         color: #bfbfbf !important;
@@ -50,6 +103,10 @@
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
+
+                @include phone {
+                    display: none;
+                }
 
                 .preamble {
                     color: var(--color-dark) !important;
@@ -78,6 +135,12 @@
     overflow: hidden;
     max-width: 450px;
     max-height: 450px;
+
+    @include phone {
+        flex: 0 0 auto;
+        max-width: 300px; 
+        max-height: 300px;
+    }
 
     img {
         transition: transform 0.7s ease;
@@ -124,23 +187,44 @@
 
         img {
             transform: scale(1.1) rotate(5deg);
+
+            @include phone {
+                transform: none;
+            }
         }
 
         .content {
             height: 120px;
             background-color: var(--color-primary);
+
+            @include phone {
+                height: 70px;
+                background-color: var(--color-primary-transparent);
+            }
         }
 
         .text {
             margin-top: 40px;
 
+            @include phone {
+                margin-top: 20px;
+            }
+
             h6 {
                 color: var(--color-secondary);
+
+                @include phone {
+                    color: var(--color-light);
+                }
             }
         }
 
         .arrow {
             display: block;
+
+            @include phone {
+                display: none;
+            }
         }
     }
 }

@@ -1,7 +1,20 @@
 #contact-map {
     height: 800px;
     overflow: hidden;
-    padding-bottom: 60px;
+
+
+    @include phone {
+        display: none;
+    }
+
+    @include tablet {
+        height: 600px;
+    }
+
+    @include desktop {
+        height: 800px;
+        padding-bottom: 60px;
+    }
 
     img {
         width: 100%;

@@ -33,6 +33,18 @@
             width: 350px;
             border-right: 1px solid var(--color-border-gray);
 
+            @include phone {
+                display: none;
+            }
+
+            @include tablet {
+                display: none;
+            }
+
+            @include desktop {
+                display: none;
+            }
+
 
             .placeholder {
                 width: 300px;

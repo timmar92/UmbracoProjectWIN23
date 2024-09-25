@@ -4,11 +4,27 @@
     padding-top: 60px;
     padding-bottom: 60px;
 
+    @include phone {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        overflow: hidden;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        h2 {
+            @include phone {
+                font-size: 1.9rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 300px;
+            }
+        }
 
         .breadcrumb {
             display: flex;
@@ -21,6 +37,13 @@
 
             li {
                 position: relative;
+
+                @include phone {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 190px;
+                }
 
                 a {
                     color: var(--color-primary);
@@ -47,6 +70,10 @@
         position: absolute;
         bottom: 0;
         left: 0;
+
+        @include phone {
+            display: none;
+        }
     }
 
     .right-image {

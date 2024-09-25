@@ -1,9 +1,15 @@
 footer {
     padding-top: 10px;
     padding-bottom: 10px;
+
     .container {
         .copyright {
             display: flex;
+
+            @include phone {
+                flex-direction: column;
+            }
+
             padding {
                 @include text;
             }
