@@ -157,7 +157,7 @@ body {
 }
 @media (min-width: 1400px) {
   .service-details .container .service-sidebar {
-    display: none;
+    display: block;
   }
 }
 .service-details .container .service-sidebar .placeholder {
