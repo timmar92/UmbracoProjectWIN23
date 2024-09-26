@@ -21,11 +21,6 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="wwwroot\media\about-page-link.svg" />
-    <None Include="wwwroot\media\breadcrumb-left-image.svg" />
-    <None Include="wwwroot\media\breadcrumb-right-image.svg" />
-    <None Include="wwwroot\media\google-map.svg" />
-    <None Include="wwwroot\media\Mail.svg" />
   </ItemGroup>
 
   <ItemGroup>
